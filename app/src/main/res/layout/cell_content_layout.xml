@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:elevation="3dp"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+
+    <android.support.v7.widget.CardView
+        style="@style/MyCardViewStyle_nopad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgTitleLeft">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgContent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- LEFT TITLE PART -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_weight="3"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:paddingTop="5dp"
+                            android:text="DAY"
+                            android:textColor="@color/light_blue"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_cell__day"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical|center"
+                            android:text="10"
+                            android:textColor="@color/light_blue"
+                            android:textSize="40sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+                <!-- RIGHT TITLE PART -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bgTitleRight">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingLeft="20dp">
+
+                            <TextView
+                                android:id="@+id/tv_cell__loc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="LOCATION"
+                                android:textColor="@color/dark_text"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_cell__doc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="DOC"
+                                android:textColor="@color/sec_text"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tv_cell__grade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="GRADE"
+                                android:textColor="@color/sec_text"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0.05"
+                            android:src="@drawable/ic_up" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cube Data"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"/>
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cube 1"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cube 2"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cube 3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Average"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 3" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_threedays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 3 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_threedays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 3 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_threedays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 3 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_threedays_ave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 3 days" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 7" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_sevendays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 7 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_sevendays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 7 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_sevendays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 7 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_sevendays_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 7 days" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 14" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fourdays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 14 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fourdays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 14 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fourdays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 14 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fourdays_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 14 days" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 21" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_tonedays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 21 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_tonedays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 21 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_tonedays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 21 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_tonedays_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 21 days" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 28" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_teightdays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 28 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_teightdays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 28 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_teightdays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 28 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_teightdays_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 28 days" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DAY 56" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fsixdays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 56 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fsixdays2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 56 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fsixdays3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 56 days" />
+
+                    <TextView
+                        android:id="@+id/tv_cell_fsixdays_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="after 56 days" />
+                </TableRow>
+            </TableLayout>
+
+            <Button
+                android:id="@+id/bt_cell_edit"
+                style="@style/ButtonTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Record data" />
+
+            <Button
+                android:id="@+id/bt_cell_delete"
+                style="@style/ButtonTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Delete" />
+
+            <Button
+                android:id="@+id/bt_cell_move"
+                style="@style/ButtonTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Move Row" />
+
+            <Button
+                android:id="@+id/bt_cell_export"
+                style="@style/ButtonTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="Export to spreadsheet" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

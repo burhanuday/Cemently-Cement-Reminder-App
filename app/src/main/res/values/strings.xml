@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cemently</string>
+    <string name="banner">ca-app-pub-4318189835253436/4915296869</string>
+    <string name="interstitial">ca-app-pub-4318189835253436/7210287715</string>
+    <string name="rewarded">ca-app-pub-4318189835253436/5238730494</string>
+    <string name="appid">ca-app-pub-4318189835253436~3027500120</string>
+    <string name="openDrawer">Drawer open</string>
+    <string name="closeDrawer">Drawer close</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_widget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d3d3d3"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_widget_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:text="Today"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:text="Widget is refreshed every 30 mins"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <ListView
+        android:id="@+id/lv_widget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#d3d3d3"
+        android:dividerHeight="1dp" />
+
+
+    <TextView
+        android:id="@+id/empty_view_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:text="No data"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="15dp">
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="A new update is available"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_dialog_changelog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/bt_update_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPDATE APP" />
+
+    <Button
+        android:id="@+id/bt_update_later"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MAYBE LATER" />
+</LinearLayout>

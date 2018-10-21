@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "137934547699",
+    "firebase_url": "https://admob-app-id-6440112903.firebaseio.com",
+    "project_id": "admob-app-id-6440112903",
+    "storage_bucket": "admob-app-id-6440112903.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137934547699:android:201513662e51e719",
+        "android_client_info": {
+          "package_name": "com.burhanuday.automaticinsultgenerator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137934547699-7bg5rdr70uqd8u934d1raj12v1f6vpbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ivtTgpjlBT0VP8yVqfTED-Bf9dopPG0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137934547699:android:1ec06be776b15d0c",
+        "android_client_info": {
+          "package_name": "com.burhanuday.cubetestreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137934547699-7bg5rdr70uqd8u934d1raj12v1f6vpbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ivtTgpjlBT0VP8yVqfTED-Bf9dopPG0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137934547699:android:fb05a73b76efb17a",
+        "android_client_info": {
+          "package_name": "com.burhanuday.logandantilogcalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137934547699-7bg5rdr70uqd8u934d1raj12v1f6vpbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ivtTgpjlBT0VP8yVqfTED-Bf9dopPG0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
