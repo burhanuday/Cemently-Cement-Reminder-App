@@ -185,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawers();
+        }else {
+            super.onBackPressed();
         }
     }
 
