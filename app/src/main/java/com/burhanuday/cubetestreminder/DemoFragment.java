@@ -42,10 +42,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.ramotion.foldingcell.FoldingCell;
 
 import org.w3c.dom.Text;
@@ -128,27 +124,14 @@ public class DemoFragment extends Fragment {
 
         ReminderManager reminderManager = new ReminderManager(getActivity());
         reminderManager.setReminder(calendar);
-
-        /*
-        ComponentName receiver = new ComponentName(getActivity(), onBootReceiver.class);
-        PackageManager pm = getActivity().getPackageManager();
-
-        pm.setComponentEnabledSetting(receiver,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP);
-        */
     }
 
     public void initSettings(View view){
-        CardView purchasePro = view.findViewById(R.id.card_purchase_pro);
         CardView setT = view.findViewById(R.id.card_setTime);
         CardView checkPermissions = view.findViewById(R.id.card_permissions);
         CardView toExcel = view.findViewById(R.id.card_export);
         CardView takeBackup = view.findViewById(R.id.card_take_backup);
         CardView addWidget = view.findViewById(R.id.card_add_widget);
-        CardView sendFeedback = view.findViewById(R.id.card_send_feedback);
-        final CardView rateApp = view.findViewById(R.id.card_rate_app);
-        CardView showTutorial = view.findViewById(R.id.card_show_tutorial);
         final TextView setTime = view.findViewById(R.id.tv_rem_time);
         final GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
         setTime.setText(globalPrefs.getHour() + ":" + globalPrefs.getMinute());
@@ -168,10 +151,6 @@ public class DemoFragment extends Fragment {
             }
         });
 
-        if (globalPrefs.isRatedByUser()){
-            rateApp.setVisibility(View.GONE);
-        }
-
         checkPermissions.setVisibility(View.GONE);
 
         addWidget.setOnClickListener(new View.OnClickListener() {
@@ -187,27 +166,6 @@ public class DemoFragment extends Fragment {
             public void onClick(View v) {
                     startActivity(new Intent(getActivity(), Backup.class));
 
-            }
-        });
-
-
-        sendFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String[] TO = {"udaipurwalaburhanuddin@gmail.com"};
-                String[] CC = {"@gmail.com"};
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:"));
-                emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-                //emailIntent.putExtra(Intent.EXTRA_CC, CC);
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name) + " - Feedback");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Enter feedback here");
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toasty.error(getActivity(), "There is no email client installed", Toast.LENGTH_SHORT, true).show();
-                }
             }
         });
 

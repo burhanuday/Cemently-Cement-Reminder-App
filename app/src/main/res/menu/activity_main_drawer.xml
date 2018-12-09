@@ -20,12 +20,6 @@
             android:title="Design Mix"
             android:icon="@drawable/ic_arrow_forward"
             android:iconTint="@color/colorPrimary"/>
-        <item android:id="@+id/nav_unlock_pro"
-            android:orderInCategory="101"
-            app:showAsAction="never"
-            android:title="Unlock all features"
-            android:icon="@drawable/ic_monetization_on"
-            android:iconTint="@color/colorPrimary"/>
 
     </group>
 
