@@ -72,17 +72,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String TABLE_NAME3 = "forExport";
     private static final String TABLE_NAME4 = "exportIndi";
 
-
-
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String CREATE_TABLE_PROJECTS = "CREATE TABLE " + TABLE_NAME1 + "(" +
                 KEY_ID + " INTEGER PRIMARY KEY, " +
                 KEY_LOCATION + " TEXT, " +
@@ -371,50 +367,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return arrayList;
     }
 
-
-    /*void addProjectbyArray(ArrayList<CementCube> arrayList){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME1);
-
-        int i;
-        for(i = 0; i < arrayList.size(); i++) {
-
-            ContentValues values = new ContentValues();
-            CementCube cc = arrayList.get(i);
-            values.put(KEY_LOCATION, cc.getLocation());
-            values.put(KEY_DATE, cc.getDate1());
-            values.put(KEY_CG, cc.getConcreteGrade());
-            values.put(KEY_sTHREE1, cc.getsThree1());
-            values.put(KEY_sSEVEN1, cc.getsSeven1());
-            values.put(KEY_sFOURTEEN1, cc.getsFourteen1());
-            values.put(KEY_sTWENTYONE1, cc.getsTwentyOne1());
-            values.put(KEY_sTWENTYEIGHT1, cc.getsTwentyEight1());
-            values.put(KEY_sFIFTYSIX1, cc.getsFiftySix1());
-            values.put(KEY_sTHREE2, cc.getsThree2());
-            values.put(KEY_sSEVEN2, cc.getsSeven2());
-            values.put(KEY_sFOURTEEN2, cc.getsFourteen2());
-            values.put(KEY_sTWENTYONE2, cc.getsTwentyOne2());
-            values.put(KEY_sTWENTYEIGHT2, cc.getsTwentyEight2());
-            values.put(KEY_sFIFTYSIX2, cc.getsFiftySix2());
-            values.put(KEY_sTHREE3, cc.getsThree3());
-            values.put(KEY_sSEVEN3, cc.getsSeven3());
-            values.put(KEY_sFOURTEEN3, cc.getsFourteen3());
-            values.put(KEY_sTWENTYONE3, cc.getsTwentyOne3());
-            values.put(KEY_sTWENTYEIGHT3, cc.getsTwentyEight3());
-            values.put(KEY_sFIFTYSIX3, cc.getsFiftySix3());
-            values.put(KEY_after3, cc.getAfter3());
-            values.put(KEY_after7, cc.getAfter7());
-            values.put(KEY_after14, cc.getAfter14());
-            values.put(KEY_after21, cc.getAfter21());
-            values.put(KEY_after28, cc.getAfter28());
-            values.put(KEY_after56, cc.getAfter56());
-
-            db.insert(TABLE_NAME1, null, values);
-        }
-    }*/
-
-
-
     boolean addProject(CementCube cc){
             SQLiteDatabase db = this.getReadableDatabase();
             ContentValues values = new ContentValues();
@@ -687,10 +639,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME4);
-
-
         onCreate(db);
-
     }
 
 

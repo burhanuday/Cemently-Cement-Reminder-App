@@ -37,17 +37,6 @@ import android.support.v7.widget.Toolbar;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
-import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -167,86 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-    }
-    public void runUpdateCheck(){
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    DocumentReference docRef = db.collection("update_ctr").document("update_check");
-                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d("updateCheck", "DocumentSnapshot data: " + document.getData());
-                                    UpdateObject updateObject = document.toObject(UpdateObject.class);
-                                    Log.i("updateCheck",Integer.toString( updateObject.getApp_version()));
-                                    try {
-                                        PackageInfo pInfo = MainActivity.this.getPackageManager().getPackageInfo(getPackageName(), 0);
-                                        String version = pInfo.versionName;
-                                        int verCode = pInfo.versionCode;
-                                        if (updateObject.getApp_version()>verCode){
-                                            //show update dialog here
-
-                                            updateDialog(updateObject);
-                                        }
-                                    } catch (PackageManager.NameNotFoundException e) {
-                                        e.printStackTrace();
-                                    }
-                                } else {
-                                    //Log.d(TAG, "No such document");
-                                }
-                            } else {
-                                //Log.d(TAG, "get failed with ", task.getException());
-                            }
-                        }
-                    });
-                }
-                catch (Exception e) {}
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //show dialog here
-
-                    }
-                });
-            }
-        };
-        thread.start();
-    }
-
-    public void updateDialog(UpdateObject updateObject){
-        Log.i("update Dialog", updateObject.changelog);
-        Log.i("update Dialog", Integer.toString(updateObject.getApp_version()));
-        final Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.dialog_update);
-        Button updateLater = dialog.findViewById(R.id.bt_update_later);
-        Button updateNow = dialog.findViewById(R.id.bt_update_now);
-        TextView changelog = dialog.findViewById(R.id.tv_dialog_changelog);
-
-        changelog.setText(updateObject.getChangelog());
-        updateLater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-        updateNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                }
-            }
-        });
-        dialog.show();
     }
 
     public String calcDate(String doc, int afterDays){
