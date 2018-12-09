@@ -29,7 +29,6 @@ public class EditAlarm extends AppCompatActivity {
     CementCube cementCube = null;
     Button save;
     GlobalPrefs globalPrefs;
-    customEncryption ce;
     Handler handler = new Handler();
     int tableNumber;
 
@@ -169,7 +168,6 @@ public class EditAlarm extends AppCompatActivity {
         days_56_2 = findViewById(R.id.et_s56days2);
         days_56_3 = findViewById(R.id.et_s56days3);
         save = findViewById(R.id.bt_save);
-        ce = new customEncryption();
         globalPrefs = new GlobalPrefs(this);
     }
 

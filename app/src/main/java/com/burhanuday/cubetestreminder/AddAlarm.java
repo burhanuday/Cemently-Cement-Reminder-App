@@ -37,7 +37,6 @@ public class AddAlarm extends AppCompatActivity {
     CheckBox days_3, days_7, days_14, days_21, days_28, days_56;
     DatabaseHelper databaseHelper;
     TextView days3, days7, days14, days21, days28, days56;
-    customEncryption ce;
     GlobalPrefs globalPrefs;
     Handler handler = new Handler();
 
@@ -58,40 +57,6 @@ public class AddAlarm extends AppCompatActivity {
                 return true;
             }
         });
-
-        /*customEncryption encryption = new customEncryption();
-        Toast.makeText(this, encryption.decode("ȓȑȗȏȗȎȑȔȐ!ᖛᗆ ᗉᗁᗄᖽᖷᖶ ᖴᗁᖻ"), Toast.LENGTH_SHORT).show();*/
-        /*Intent myIntent = new Intent(AddAlarm.this, Backup.class);
-        //myIntent.putExtra("key", value); //Optional parameters
-        AddAlarm.this.startActivity(myIntent);*/
-        //DatabaseHelper test = new DatabaseHelper(this);
-        //test.exportIndi(2, 1);
-        /*test.fromBackup();
-        /*test.moveRow("HMM3", "history", "projects");
-        ArrayList<CementCube> arrayList = test.searchDate("19-6-2018", 1);
-        String s = "";
-        for(int i = 0; i < arrayList.size(); i++){
-            CementCube cc = arrayList.get(i);
-            s += cc.getId() + ", ";
-        }
-        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
-        /*
-        //test.delrow(1, 2);
-        //test.comparehelper();
-        /*if(isStoragePermissionGranted())
-            test.makeExcel(2);*/
-        /*ArrayList<CementCube> list = new ArrayList<CementCube>();
-        list.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        list.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        test.addProjectbyArray(list);*/
-        //test.compare();
-        //Toast.makeText(getApplicationContext(), t, Toast.LENGTH_LONG).show();
-        //test.onCreate(null);
-
         isStoragePermissionGranted();
     }
 
@@ -208,7 +173,6 @@ public class AddAlarm extends AppCompatActivity {
         days56 = findViewById(R.id.tv_56days);
 
         databaseHelper = new DatabaseHelper(AddAlarm.this);
-        ce = new customEncryption();
         globalPrefs = new GlobalPrefs(this);
     }
 

@@ -11,12 +11,10 @@ import android.util.Log;
 public class GlobalPrefs {
     Context context;
     private SharedPreferences sharedPreferences;
-    private customEncryption ce;
 
     GlobalPrefs(Context context){
         this.context = context;
         sharedPreferences = context.getSharedPreferences("com.burhanuday.cubetestreminder", Context.MODE_PRIVATE);
-        ce = new customEncryption();
     }
 
     public String getLastRefreshed(){
