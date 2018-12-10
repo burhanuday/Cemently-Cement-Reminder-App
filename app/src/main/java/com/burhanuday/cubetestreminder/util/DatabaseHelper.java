@@ -1,7 +1,6 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.util;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +14,8 @@ import android.widget.Toast;
 
 import com.ajts.androidmads.library.ExcelToSQLite;
 import com.ajts.androidmads.library.SQLiteToExcel;
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.model.CementCube;
 
 import java.io.File;
 import java.text.ParseException;
@@ -367,7 +368,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return arrayList;
     }
 
-    boolean addProject(CementCube cc){
+    public boolean addProject(CementCube cc){
             SQLiteDatabase db = this.getReadableDatabase();
             ContentValues values = new ContentValues();
             values.put(KEY_LOCATION, cc.getLocation());
@@ -440,7 +441,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
-    void addStrength(float strength, int day, int id, int n, int tableNumber){//where n is the 1st, 2nd or 3rd strength AND where 1 is for ongoing and 2 is for history
+    public void addStrength(float strength, int day, int id, int n, int tableNumber){//where n is the 1st, 2nd or 3rd strength AND where 1 is for ongoing and 2 is for history
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlcom = "";
         String table = tableNumber==1?TABLE_NAME1:TABLE_NAME2;

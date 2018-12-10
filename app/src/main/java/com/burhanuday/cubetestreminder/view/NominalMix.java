@@ -1,16 +1,18 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.model.GradeObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import es.dmoral.toasty.Toasty;
@@ -39,11 +41,11 @@ public class NominalMix extends AppCompatActivity {
     }
 
     public void calculate(){
-        float totalparts = gradeObject.cement + gradeObject.fine + gradeObject.coarse;
+        float totalparts = gradeObject.getCement() + gradeObject.getFine() + gradeObject.getCoarse();
         float vol_1_part = (float)(1/5.5) * totalparts;
-        float cement = gradeObject.cement * vol_1_part;
-        float fineAgg = gradeObject.fine * vol_1_part;
-        float coarseAgg = gradeObject.coarse * vol_1_part;
+        float cement = gradeObject.getCement() * vol_1_part;
+        float fineAgg = gradeObject.getFine() * vol_1_part;
+        float coarseAgg = gradeObject.getCoarse() * vol_1_part;
     }
 
     public String formatFloat(float f){
@@ -61,7 +63,7 @@ public class NominalMix extends AppCompatActivity {
     public List<String> getGradeList(){
         List<String> gradeList = new ArrayList<>();
         for (int i=0; i<allGrades.size(); i++){
-            gradeList.add(allGrades.get(i).grade);
+            gradeList.add(allGrades.get(i).getGrade());
         }
         return gradeList;
     }
@@ -75,9 +77,9 @@ public class NominalMix extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 gradeObject = allGrades.get(position);
                 calculate();
-                cem.setText(formatFloat(gradeObject.cement));
-                fineAgg.setText(formatFloat(gradeObject.fine));
-                coarseAgg.setText(formatFloat(gradeObject.coarse));
+                cem.setText(formatFloat(gradeObject.getCement()));
+                fineAgg.setText(formatFloat(gradeObject.getFine()));
+                coarseAgg.setText(formatFloat(gradeObject.getCoarse()));
             }
 
             @Override

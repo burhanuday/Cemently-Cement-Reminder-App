@@ -1,18 +1,10 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.widget;
 
-import android.app.LauncherActivity;
-import android.app.Service;
 import android.appwidget.AppWidgetManager;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.burhanuday.cubetestreminder.widget.ListViewRemoteViewsFactory;
 
 public class ListViewWidgetService extends RemoteViewsService {
 

@@ -1,4 +1,4 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.view;
 
 /**
  * Created by Burhanuddin on 16-05-2018.
@@ -10,14 +10,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.burhanuday.cubetestreminder.util.GlobalPrefs;
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.model.CementCube;
+import com.burhanuday.cubetestreminder.util.DatabaseHelper;
+
 import es.dmoral.toasty.Toasty;
 
 public class EditAlarm extends AppCompatActivity {

@@ -1,10 +1,9 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.util;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 

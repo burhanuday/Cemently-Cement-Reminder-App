@@ -1,4 +1,4 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.util;
 
 import android.app.IntentService;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.view;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.burhanuday.cubetestreminder.util.DatabaseHelper;
+import com.burhanuday.cubetestreminder.R;
 
 public class Backup extends AppCompatActivity {
 

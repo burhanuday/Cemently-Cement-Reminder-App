@@ -1,7 +1,9 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.burhanuday.cubetestreminder.R;
 
 public class QuantityEstimation extends AppCompatActivity {
 

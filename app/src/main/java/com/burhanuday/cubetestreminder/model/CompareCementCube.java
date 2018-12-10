@@ -1,4 +1,6 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.model;
+
+import com.burhanuday.cubetestreminder.model.CementCube;
 
 /**
  * Created by Burhanuddin on 06-06-2018.

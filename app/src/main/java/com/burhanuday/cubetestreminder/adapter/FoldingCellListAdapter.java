@@ -1,4 +1,4 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,34 +6,28 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.burhanuday.cubetestreminder.util.GlobalPrefs;
+import com.burhanuday.cubetestreminder.view.MainActivity;
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.model.CementCube;
+import com.burhanuday.cubetestreminder.util.DatabaseHelper;
+import com.burhanuday.cubetestreminder.view.EditAlarm;
 import com.ramotion.foldingcell.FoldingCell;
-
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Burhanuddin on 31-05-2018.
@@ -126,26 +120,6 @@ public class FoldingCellListAdapter extends ArrayAdapter<CementCube> {
                 viewHolder.location.setText(item.getLocation());
                 viewHolder.doc.setText(item.getDate1());
         GlobalPrefs globalPrefs = new GlobalPrefs(context);
-            /*
-            viewHolder.s3days.setText(String.valueOf(item.getsThree1()/22.5f));
-            viewHolder.s3days2.setText(String.valueOf(item.getsThree2()/22.5f));
-            viewHolder.s3days3.setText(String.valueOf(item.getsThree3()/22.5f));
-            viewHolder.s7days.setText(String.valueOf(item.getsSeven1()/22.5f));
-            viewHolder.s7days2.setText(String.valueOf(item.getsSeven2()/22.5f));
-            viewHolder.s7days3.setText(String.valueOf(item.getsSeven3()/22.5f));
-            viewHolder.s14days.setText(String.valueOf(item.getsFourteen1()/22.5f));
-            viewHolder.s14days2.setText(String.valueOf(item.getsFourteen2()/22.5f));
-            viewHolder.s14days3.setText(String.valueOf(item.getsFourteen3()/22.5f));
-            viewHolder.s21days.setText(String.valueOf(item.getsTwentyOne1()/22.5f));
-            viewHolder.s21days2.setText(String.valueOf(item.getsTwentyOne2()/22.5f));
-            viewHolder.s21days3.setText(String.valueOf(item.getsTwentyOne3()/22.5f));
-            viewHolder.s28days.setText(String.valueOf(item.getsTwentyEight1()/22.5f));
-            viewHolder.s28days2.setText(String.valueOf(item.getsTwentyEight2()/22.5f));
-            viewHolder.s28days3.setText(String.valueOf(item.getsTwentyEight3()/22.5f));
-            viewHolder.s56days.setText(String.valueOf(item.getsFiftySix1()/22.5f));
-            viewHolder.s56days2.setText(String.valueOf(item.getsFiftySix2()/22.5f));
-            viewHolder.s56days3.setText(String.valueOf(item.getsFiftySix3()/22.5f));
-            */
             if (globalPrefs.getDivide()){
                 viewHolder.unit.setText("Cube Data in MPa");
             }else {

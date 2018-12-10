@@ -1,16 +1,11 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.view;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -28,8 +23,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
@@ -37,6 +30,13 @@ import android.support.v7.widget.Toolbar;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.util.ReminderManager;
+import com.burhanuday.cubetestreminder.adapter.ViewPagerAdapter;
+import com.burhanuday.cubetestreminder.util.DataFetch;
+import com.burhanuday.cubetestreminder.util.DatabaseHelper;
+import com.burhanuday.cubetestreminder.util.GlobalPrefs;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -307,7 +307,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initBottomNav(){
-
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         }
@@ -337,66 +336,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-// Set background color
         bottomNavigation.setDefaultBackgroundColor(getResources().getColor(R.color.white));
-
-// Disable the translation inside the CoordinatorLayout
         bottomNavigation.setBehaviorTranslationEnabled(false);
-
-// Enable the translation of the FloatingActionButton
-       // bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
-
-// Change colors
-      bottomNavigation.setAccentColor(getResources().getColor(R.color.light_blue));
-      bottomNavigation.setInactiveColor(getResources().getColor(R.color.light_gray));
-
-// Force to tint the drawable (useful for font with icon for example)
+        bottomNavigation.setAccentColor(getResources().getColor(R.color.light_blue));
+        bottomNavigation.setInactiveColor(getResources().getColor(R.color.light_gray));
         bottomNavigation.setForceTint(true);
-
-// Display color under navigation bar (API 21+)
-// Don't forget these lines in your style-v21
-// <item name="android:windowTranslucentNavigation">true</item>
-// <item name="android:fitsSystemWindows">true</item>
         bottomNavigation.setTranslucentNavigationEnabled(true);
-
-// Manage titles
-       bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
-       // bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-     //   bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
-
-// Use colored navigation with circle reveal effect
-       bottomNavigation.setColored(false);
-// Set current item programmatically
+        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+        bottomNavigation.setColored(false);
         bottomNavigation.setCurrentItem(0);
-
-// Customize notification (title, background, typeface)
-   //     bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
-
-// Add or remove notification for each item
-    //    bottomNavigation.setNotification("1", 3);
-// OR
-    /*    AHNotification notification = new AHNotification.Builder()
-                .setText("1")
-                .setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary))
-                .setTextColor(ContextCompat.getColor(MainActivity.this, R.color.white))
-                .build();
-        bottomNavigation.setNotification(notification, 1);
-
-        */
-
-// Enable / disable item & set disable color
-     /*   bottomNavigation.enableItemAtPosition(2);
-        bottomNavigation.disableItemAtPosition(2);
-        bottomNavigation.setItemDisableColor(Color.parseColor("#3A000000"));
-
-        */
-
-// Set listeners
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-
                 switch (position){
                     case 0:
                         setToolbarTitle("Today");
@@ -437,45 +388,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-		/*
-		bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-			@Override public void onPositionChange(int y) {
-				Log.d("DemoActivity", "BottomNavigation Position: " + y);
-			}
-		});
-		*/
-
         viewPager.setOffscreenPageLimit(4);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-
         currentFragment = adapter.getCurrentFragment();
-/*
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Setting custom colors for notification
-                AHNotification notification = new AHNotification.Builder()
-                        .setText(":)")
-                        .setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.white))
-                        .setTextColor(ContextCompat.getColor(MainActivity.this, R.color.white))
-                        .build();
-                bottomNavigation.setNotification(notification, 1);
-                Snackbar.make(bottomNavigation, "Snackbar with bottom navigation",
-                        Snackbar.LENGTH_SHORT).show();
-
-            }
-        }, 3000);
-
-        */
-
-        //bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
-
-        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-            @Override public void onPositionChange(int y) {
-                // Manage the new y position
-            }
-        });
     }
 
 

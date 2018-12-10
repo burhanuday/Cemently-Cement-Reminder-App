@@ -1,10 +1,8 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
-
-import java.util.ArrayList;
 
 /**
  * Created by Burhanuddin on 12-05-2018.

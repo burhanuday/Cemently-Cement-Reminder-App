@@ -1,4 +1,4 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ public class GlobalPrefs {
     Context context;
     private SharedPreferences sharedPreferences;
 
-    GlobalPrefs(Context context){
+    public GlobalPrefs(Context context){
         this.context = context;
         sharedPreferences = context.getSharedPreferences("com.burhanuday.cubetestreminder", Context.MODE_PRIVATE);
     }

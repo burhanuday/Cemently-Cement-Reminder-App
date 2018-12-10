@@ -1,14 +1,16 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.util;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.burhanuday.cubetestreminder.model.CementCube;
+import com.burhanuday.cubetestreminder.model.CompareCementCube;
+import com.burhanuday.cubetestreminder.util.DatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 

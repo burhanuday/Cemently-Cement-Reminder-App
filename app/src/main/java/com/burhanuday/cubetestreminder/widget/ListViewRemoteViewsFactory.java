@@ -1,10 +1,13 @@
-package com.burhanuday.cubetestreminder;
+package com.burhanuday.cubetestreminder.widget;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+
+import com.burhanuday.cubetestreminder.R;
+import com.burhanuday.cubetestreminder.model.CementCube;
+import com.burhanuday.cubetestreminder.util.DataFetch;
 
 import java.util.ArrayList;
 import java.util.List;
