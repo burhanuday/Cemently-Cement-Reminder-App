@@ -46,28 +46,12 @@ public class GlobalPrefs {
         return sharedPreferences.getInt("last_fragment", 0);
     }
 
-    public boolean isRatedByUser(){
-        return sharedPreferences.getBoolean("user_rated", false);
-    }
-
-    public void saveRating(){
-        sharedPreferences.edit().putBoolean("user_rated", true).apply();
-    }
-
     public int daysPast(){
         return sharedPreferences.getInt("days_past", 0);
     }
 
     public void incrementDaysPast(){
         sharedPreferences.edit().putInt("days_past", daysPast()+1).apply();
-    }
-
-    public boolean isPro(){
-        return sharedPreferences.getBoolean("checkVersion", false);
-    }
-
-    public void setPro(boolean value){
-        sharedPreferences.edit().putBoolean("checkVersion", value).apply();
     }
 
     public boolean getDivide(){

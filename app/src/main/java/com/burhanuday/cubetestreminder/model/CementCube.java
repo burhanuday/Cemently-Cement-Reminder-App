@@ -254,26 +254,6 @@ public class CementCube implements Parcelable {
         this.requestBtnClickListener = requestBtnClickListener;
     }
 
-
-    //IS NOT UPDATED FOR THE CHANGE IN COLUMNS OF STRENGTH
-    /*public static ArrayList<CementCube> getTestingList() {
-        ArrayList<CementCube> items = new ArrayList<>();
-    //    items.add(new CementCube("$14", "$270", "W 79th St, NY, 10024", "W 139th St, NY, 10030", 3, "TODAY", "05:10 PM"));
-        items.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        items.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        items.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        items.add(new CementCube(0, "block 3c", "31-6-2018", "m31", 1,1 ,1 ,
-                1, 1, 1, 31, 12, 24, 45, 34,34,
-                " "," ", " ", " ", " ", " "));
-        return items;
-    }*/
-
     @Override
     public int describeContents() {
         return 0;

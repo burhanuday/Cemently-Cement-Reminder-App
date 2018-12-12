@@ -48,8 +48,6 @@ import es.dmoral.toasty.Toasty;
 public class MainActivity extends AppCompatActivity {
     private DemoFragment currentFragment;
     private ViewPagerAdapter adapter;
-    private Handler handler = new Handler();
-    Handler adHandler1 = new Handler();
     // UI
     private AHBottomNavigationViewPager viewPager;
     private AHBottomNavigation bottomNavigation;
@@ -90,13 +88,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        if (!globalPrefs.isRatedByUser()) globalPrefs.incrementDaysPast();
-       // runUpdateCheck();
-        //Intent intent = new Intent();
-        //intent.putExtra("key", 101);
-
-        //onMessage(this, intent);
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navHeader = navigationView.getHeaderView(0);
@@ -109,6 +100,20 @@ public class MainActivity extends AppCompatActivity {
         setUpNavigationView();
         setToolbarTitle("Today");
         drawer.openDrawer(Gravity.START);
+        final Handler closeDrawerHandler = new Handler();
+        closeDrawerHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (drawer.isDrawerOpen(Gravity.START)){
+                            drawer.closeDrawers();
+                        }
+                    }
+                });
+            }
+        }, 1000);
 
     }
 
@@ -158,29 +163,6 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    public String calcDate(String doc, int afterDays){
-        Log.i("DOC", doc);
-        Date todayDate = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            todayDate = format.parse(doc);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            Log.i("DATE", "error while parsing date");
-        }
-        Log.i("TODAY DAte", String.valueOf(todayDate));
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(todayDate);
-        calendar.add(Calendar.DAY_OF_YEAR, afterDays);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        String afterDate = day + "-" + (month + 1) + "-" + year;
-        Log.i("DATE ADDED:", afterDate);
-        return afterDate;
-    }
-
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -198,14 +180,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(year, month, day, hour, minute);
         ReminderManager reminderManager = new ReminderManager(MainActivity.this);
         reminderManager.setReminder(calendar);
-        /*
-        ComponentName receiver = new ComponentName(getActivity(), onBootReceiver.class);
-        PackageManager pm = getActivity().getPackageManager();
-
-        pm.setComponentEnabledSetting(receiver,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP);
-        */
     }
 
 
@@ -237,8 +211,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void askPermissions(){
-
-
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -302,10 +274,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
-        adHandler1.removeCallbacksAndMessages(null);
     }
 
+    @SuppressLint("RestrictedApi")
     public void initBottomNav(){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -319,7 +290,6 @@ public class MainActivity extends AppCompatActivity {
         AHBottomNavigationItem item3 = new AHBottomNavigationItem("Completed", R.drawable.ic_history, R.color.light_gray);
         AHBottomNavigationItem item4 = new AHBottomNavigationItem("Settings", R.drawable.ic_settings, R.color.light_gray);
 
-// Add items
         bottomNavigation.addItem(item1);
         bottomNavigation.addItem(item2);
         bottomNavigation.addItem(item3);
