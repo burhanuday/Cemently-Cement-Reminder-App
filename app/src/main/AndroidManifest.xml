@@ -14,29 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".view.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".view.AddAlarm"
-            android:label="Add Alarm"
-            android:parentActivityName=".view.MainActivity"
-            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".view.MainActivity" />
-
-        <activity
-            android:name=".view.EditAlarm"
-            android:screenOrientation="portrait" />
 
         <service
             android:name=".widget.ListViewWidgetService"
@@ -46,7 +27,7 @@
 
         <service android:name=".util.ReminderService" />
 
-        <receiver android:name=".util.onBootReceiver">
+        <receiver android:name=".util.OnBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -68,12 +49,6 @@
             android:name=".widget.ListViewWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <activity
-            android:name=".view.Backup"
-            android:label="Backup"
-            android:parentActivityName=".view.MainActivity"
-            android:screenOrientation="portrait" />
-
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".view.MainActivity" />
@@ -85,7 +60,18 @@
             android:name=".view.NominalMix"
             android:screenOrientation="portrait" />
         <activity android:name=".view.DesignMixResult" />
-        <activity android:name=".view.QuantityEstimation"/>
+        <activity android:name=".view.QuantityEstimation" />
+        <activity
+            android:name=".view.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -6,18 +6,17 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.burhanuday.cubetestreminder.R;
-import com.burhanuday.cubetestreminder.model.CementCube;
-import com.burhanuday.cubetestreminder.util.DataFetch;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 class ListViewRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
-    private List<CementCube> cubes = new ArrayList<>();
+    //private List<CementCube> cubes = new ArrayList<>();
     private Context context = null;
     private int appWidgetId;
-
 
     public ListViewRemoteViewsFactory(Context context, Intent intent) {
 
@@ -31,24 +30,24 @@ class ListViewRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactor
     }
 
     private void populateListItem() {
-        DataFetch dataFetch = new DataFetch(context);
-        cubes = dataFetch.getToday();
+        //DataFetch dataFetch = new DataFetch(context);
+        //cubes = dataFetch.getToday();
     }
 
     @Override
     public RemoteViews getViewAt(int position) {
         final RemoteViews remoteView = new RemoteViews(
                 context.getPackageName(), R.layout.widget_row);
-        CementCube listItem = cubes.get(position);
-        remoteView.setTextViewText(R.id.widget_cube_location, listItem.getLocation());
-        remoteView.setTextViewText(R.id.widget_cube_doc, listItem.getDate1());
-        remoteView.setTextViewText(R.id.widget_cube_grade, listItem.getConcreteGrade());
+//        CementCube listItem = cubes.get(position);
+//        remoteView.setTextViewText(R.id.widget_cube_location, listItem.getLocation());
+//        remoteView.setTextViewText(R.id.widget_cube_doc, listItem.getDate1());
+//        remoteView.setTextViewText(R.id.widget_cube_grade, listItem.getConcreteGrade());
         return remoteView;
     }
 
     @Override
     public int getCount() {
-        return cubes.size();
+        return  0;//cubes.size()
     }
 
     @Override
@@ -72,22 +71,16 @@ class ListViewRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactor
     }
 
     public int getViewTypeCount() {
-
         return 1;
-
     }
 
 
     public boolean hasStableIds() {
-
         return true;
-
     }
 
     public RemoteViews getLoadingView() {
-
         return null;
-
     }
 
 }

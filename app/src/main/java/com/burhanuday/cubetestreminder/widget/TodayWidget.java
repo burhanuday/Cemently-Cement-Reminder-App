@@ -17,7 +17,6 @@ import android.widget.RemoteViews;
 
 import com.burhanuday.cubetestreminder.R;
 import com.burhanuday.cubetestreminder.view.MainActivity;
-import com.burhanuday.cubetestreminder.widget.ListViewWidgetService;
 
 import java.util.Random;
 //import android.widget.Toast;

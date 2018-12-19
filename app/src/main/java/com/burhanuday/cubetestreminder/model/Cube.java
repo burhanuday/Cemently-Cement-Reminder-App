@@ -1,16 +1,18 @@
 package com.burhanuday.cubetestreminder.model;
 
+import java.io.Serializable;
+
 /**
  * Created by burhanuday on 10-12-2018.
  */
-public class Cube {
-    private float day3Strength;
-    private float day5Strength;
-    private float day7Strength;
-    private float day14Strength;
-    private float day21Strength;
-    private float day28Strength;
-    private float day56Strength;
+public class Cube implements Serializable {
+    private float day3Strength = 0;
+    private float day5Strength = 0;
+    private float day7Strength = 0;
+    private float day14Strength = 0;
+    private float day21Strength = 0;
+    private float day28Strength = 0;
+    private float day56Strength = 0;
 
     public Cube(){}
 

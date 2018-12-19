@@ -15,7 +15,7 @@ import java.util.Calendar;
 
 public class ReminderManager {
     public Context context;
-    public AlarmManager alarmManager;
+    private AlarmManager alarmManager;
 
     public ReminderManager(Context context){
         this.context = context;

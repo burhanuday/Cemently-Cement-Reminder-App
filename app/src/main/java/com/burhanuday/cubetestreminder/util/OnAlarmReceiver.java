@@ -24,16 +24,14 @@ public class OnAlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         this.context = context;
         WakeReminderIntentService.acquireStaticLock(context);
-        //Intent i = new Intent(context, ReminderService.class);
-        //context.startService(i);
-        DataFetch dataFetch = new DataFetch(context);
-        if (dataFetch.getToday()!=null){
-            if (dataFetch.getToday().size()>0){
-                sendNotification("You have cubes to test today!");
-            }else {
-                sendNotification("No cubes to test today! Start by adding more to be reminded");
-            }
-        }
+//        DataFetch dataFetch = new DataFetch(context);
+//        if (dataFetch.getToday()!=null){
+//            if (dataFetch.getToday().size()>0){
+//                sendNotification("You have cubes to test today!");
+//            }else {
+//                sendNotification("No cubes to test today! Start by adding more to be reminded");
+//            }
+//        }
     }
 
     private void sendNotification(String message) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CubeTestReminder.iml" filepath="$PROJECT_DIR$/CubeTestReminder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cemently-Cement-Reminder-App.iml" filepath="$PROJECT_DIR$/Cemently-Cement-Reminder-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

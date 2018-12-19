@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_design_mix"
+        style="@style/CardForList">
+        <LinearLayout style="@style/linearLayoutForCardView">
+            <TextView style="@style/CardTextView"
+                android:text="Design Mix"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_nominal_mix"
+        style="@style/CardForList">
+        <LinearLayout style="@style/linearLayoutForCardView">
+            <TextView style="@style/CardTextView"
+                android:text="Nominal Mix"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_backup"
+        style="@style/CardForList">
+        <LinearLayout style="@style/linearLayoutForCardView">
+            <TextView style="@style/CardTextView"
+                android:text="Backup And Restore"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -10,7 +10,7 @@ import com.burhanuday.cubetestreminder.model.Location;
 /**
  * Created by burhanuday on 12-12-2018.
  */
-@Database(entities = {Location.class}, version = 1)
+@Database(entities = {Location.class}, version = 2)
 public abstract class LocationDatabase extends RoomDatabase {
 
     private static volatile LocationDatabase INSTANCE;
@@ -20,7 +20,8 @@ public abstract class LocationDatabase extends RoomDatabase {
             synchronized (LocationDatabase.class){
                 if (INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            LocationDatabase.class, "locations").build();
+                            LocationDatabase.class, "locations")
+                            .allowMainThreadQueries().build();
                 }
             }
         }
