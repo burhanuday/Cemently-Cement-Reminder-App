@@ -48,7 +48,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class CalendarFragment extends Fragment implements OnDayClickListener, RecyclerAdapter.ListItemClickListener {
     private static final String TAG = "CalendarFragment";
-    private List<Date> monthDates = new ArrayList<>();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private LocationDao locationDao;
     private LocationDatabase locationDatabase;
@@ -57,6 +56,9 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
     private List<Location> monthLocationList = new ArrayList<>();
     private RecyclerAdapter recyclerAdapter;
     private ShowDetailsListener showDetailsListener;
+
+    private Date lastDayOfMonth;
+    private Date days56before;
 
     @BindView(R.id.calendar_view)
     CalendarView calendarView;
@@ -79,9 +81,8 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
         locationDao = locationDatabase.locationDao();
 
         Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
-        getLocationData(month, year);
+
+        getLocationData(calendar);
 
         calendarView.setOnDayClickListener(this);
 
@@ -94,23 +95,29 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
         calendarList.setAdapter(recyclerAdapter);
     }
 
-    private void showEventsDot(){
+    private void showEventsDownArrow(){
         Calendar calendar;
+        List<Date> downArrows;
         for (Location location : monthLocationList){
             calendar = DateUtils.getCalendar(DateUtils.convertDateToString(location.getDate()));
-            eventDays.add(new EventDay(calendar, R.drawable.ic_keyboard_arrow_down));
+            downArrows = DateUtils.getNext7Dates(calendar);
+            for (Date date : downArrows){
+                calendar = DateUtils.getCalendar(DateUtils.convertDateToString(date));
+                eventDays.add(new EventDay(calendar, R.drawable.ic_keyboard_arrow_down));
+            }
         }
         calendarView.setEvents(eventDays);
     }
 
-    private void getLocationData(int month, int year){
-        monthDates = DateUtils.getMonthDates(month, year);
+    private void getLocationData(Calendar calendar){
+        lastDayOfMonth = DateUtils.getLastDayOfMonth(calendar);
+        days56before = DateUtils.get56DaysBeforeDate(calendar);
         getEventsByMonth();
     }
 
     private void getEventsByMonth(){
         compositeDisposable.add(
-                locationDao.getByDate(monthDates)
+                locationDao.getLocationsByMonth(days56before, lastDayOfMonth)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableSingleObserver<List<Location>>(){
@@ -119,7 +126,7 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
                         monthLocationList.clear();
                         monthLocationList.addAll(locations);
                         onDayClicked(Calendar.getInstance());
-                        showEventsDot();
+                        showEventsDownArrow();
                     }
 
                     @Override
@@ -142,10 +149,11 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
     }
 
     private void onDayClicked(Calendar calendar){
-        String date = DateUtils.getDate(calendar);
+        Date date = DateUtils.convertToDate(DateUtils.getDate(calendar));
         dayLocationList.clear();
         for (Location location : monthLocationList){
-            if (date.equalsIgnoreCase(DateUtils.convertDateToString(location.getDate()))){
+            List<Date> dates = DateUtils.getNext7Dates(DateUtils.getCalendar(DateUtils.convertDateToString(location.getDate())));
+            if (dates.contains(date)){
                 dayLocationList.add(location);
             }
         }

@@ -34,22 +34,14 @@ public class DateUtils {
         return ("" + (int) dayCount);
     }
 
-    public static String afterDaysDate(String doc, int afterDays){
-        Date todayDate = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            todayDate = format.parse(doc);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+    public static Date afterDaysDate(Date doc, int afterDays){
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(todayDate);
+        calendar.setTime(doc);
         calendar.add(Calendar.DAY_OF_YEAR, afterDays);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        return (day + "-" + (month + 1) + "-" + year);
+        return DateUtils.convertToDate(day + "-" + (month + 1) + "-" + year);
     }
 
     private static Date beforeDaysDate(Date doc, int beforeDays){
@@ -80,6 +72,20 @@ public class DateUtils {
         dates.add(beforeDaysDate(getTodaysDate(), 21));
         dates.add(beforeDaysDate(getTodaysDate(), 28));
         dates.add(beforeDaysDate(getTodaysDate(), 56));
+        return dates;
+    }
+
+    public static List<Date> getNext7Dates(Calendar calendar){
+        List<Date> dates = new ArrayList<>();
+        Date date = convertToDate(getDate(calendar));
+        dates.add(afterDaysDate(date, 0));
+        dates.add(afterDaysDate(date, 3));
+        dates.add(afterDaysDate(date, 5));
+        dates.add(afterDaysDate(date, 7));
+        dates.add(afterDaysDate(date, 14));
+        dates.add(afterDaysDate(date, 21));
+        dates.add(afterDaysDate(date, 28));
+        dates.add(afterDaysDate(date, 56));
         return dates;
     }
 
@@ -129,4 +135,18 @@ public class DateUtils {
     public static String convertDateToString(Date date){
         return dateFormat.format(date);
     }
+
+    public static Date getLastDayOfMonth(Calendar calendar){
+        Calendar c = calendar;
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return convertToDate(getDate(c));
+    }
+
+    public static Date get56DaysBeforeDate(Calendar calendar){
+        Calendar c = calendar;
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return beforeDaysDate(convertToDate(getDate(c)), 56);
+    }
+
+
 }
