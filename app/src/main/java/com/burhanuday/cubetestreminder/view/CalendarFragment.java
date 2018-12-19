@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.applandeo.materialcalendarview.CalendarUtils;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.burhanuday.cubetestreminder.R;
 import com.burhanuday.cubetestreminder.adapter.RecyclerAdapter;
@@ -46,12 +47,12 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by burhanuday on 18-12-2018.
  */
-public class CalendarFragment extends Fragment implements OnDayClickListener, RecyclerAdapter.ListItemClickListener {
+public class CalendarFragment extends Fragment implements OnDayClickListener, RecyclerAdapter.ListItemClickListener,
+        OnCalendarPageChangeListener {
     private static final String TAG = "CalendarFragment";
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private LocationDao locationDao;
     private LocationDatabase locationDatabase;
-    private List<Calendar> calendars = new ArrayList<>();
     private List<Location> dayLocationList = new ArrayList<>();
     private List<Location> monthLocationList = new ArrayList<>();
     private RecyclerAdapter recyclerAdapter;
@@ -85,6 +86,8 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
         getLocationData(calendar);
 
         calendarView.setOnDayClickListener(this);
+        calendarView.setOnPreviousPageChangeListener(this);
+        calendarView.setOnForwardPageChangeListener(this);
 
         showDetailsListener = (ShowDetailsListener) getActivity();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -106,6 +109,7 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
                 eventDays.add(new EventDay(calendar, R.drawable.ic_keyboard_arrow_down));
             }
         }
+        calendarView.setEvents(new ArrayList<>());
         calendarView.setEvents(eventDays);
     }
 
@@ -117,7 +121,7 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
 
     private void getEventsByMonth(){
         compositeDisposable.add(
-                locationDao.getLocationsByMonth(days56before, lastDayOfMonth)
+                locationDao.getAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableSingleObserver<List<Location>>(){
@@ -194,4 +198,8 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
                 });
     }
 
+    @Override
+    public void onChange() {
+
+    }
 }
