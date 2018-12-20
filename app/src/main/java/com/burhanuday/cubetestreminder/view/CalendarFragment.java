@@ -202,4 +202,10 @@ public class CalendarFragment extends Fragment implements OnDayClickListener, Re
     public void onChange() {
 
     }
+
+    @Override
+    public void onDestroyView() {
+        compositeDisposable.clear();
+        super.onDestroyView();
+    }
 }

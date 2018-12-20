@@ -44,4 +44,7 @@ public interface LocationDao {
     @TypeConverters(DateConverter.class)
     @Query("SELECT * FROM locations WHERE date BETWEEN :start AND :end")
     Single<List<Location>> getLocationsByMonth(Date start, Date end);
+
+    @Query("SELECT * FROM locations WHERE name LIKE :string")
+    Single<List<Location>> getLocationByName(String string);
 }

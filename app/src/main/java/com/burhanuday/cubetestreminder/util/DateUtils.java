@@ -123,7 +123,6 @@ public class DateUtils {
     }
 
     public static Date convertToDate(String date) {
-
         try {
             return dateFormat.parse(date);
         } catch (ParseException e) {
@@ -147,6 +146,4 @@ public class DateUtils {
         c.set(Calendar.DAY_OF_MONTH, c.getActualMinimum(Calendar.DAY_OF_MONTH));
         return beforeDaysDate(convertToDate(getDate(c)), 56);
     }
-
-
 }

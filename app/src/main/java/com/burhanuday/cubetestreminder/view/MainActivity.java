@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.navigation_more:
                 fragment = new MoreFragment();
                 break;
+            case R.id.navigation_search:
+                fragment = new SearchFragment();
+                break;
         }
         return loadFragment(fragment);
     }
@@ -80,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Log.i(TAG, "loadFragment: " + fragment.getClass().getSimpleName());
         for (int i=0; i<getSupportFragmentManager().getBackStackEntryCount(); i++){
             if (fragment.getClass().getSimpleName().equals(getSupportFragmentManager().getBackStackEntryAt(i).getName())){
-                getSupportFragmentManager().popBackStackImmediate(fragment.getClass().getSimpleName(), 0);
+                getSupportFragmentManager()
+                        .popBackStackImmediate(fragment.getClass().getSimpleName(), 0);
                 return true;
             }
         }
