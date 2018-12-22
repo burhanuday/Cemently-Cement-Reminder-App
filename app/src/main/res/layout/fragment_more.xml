@@ -28,7 +28,7 @@
         style="@style/CardForList">
         <LinearLayout style="@style/linearLayoutForCardView">
             <TextView style="@style/CardTextView"
-                android:text="Backup And Restore"/>
+                android:text="Export Database"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

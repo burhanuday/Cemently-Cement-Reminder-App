@@ -55,6 +55,9 @@ dependencies {
 
     //Calendar
     implementation 'com.applandeo:material-calendar-view:1.5.1'
+
+    //Dexter Permission Manager
+    implementation 'com.karumi:dexter:5.0.0'
 }
 
 apply plugin: 'com.android.application'

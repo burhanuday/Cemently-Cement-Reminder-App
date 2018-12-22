@@ -1,5 +1,6 @@
 package com.burhanuday.cubetestreminder.view;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,6 +20,11 @@ import com.burhanuday.cubetestreminder.interfaces.ShowDetailsListener;
 import com.burhanuday.cubetestreminder.model.Cube;
 import com.burhanuday.cubetestreminder.model.Location;
 import com.burhanuday.cubetestreminder.util.DateUtils;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.util.List;
 
@@ -43,6 +49,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         navigation.setOnNavigationItemSelectedListener(this);
         loadFragment(new UpcomingFragment());
+
+        Dexter.withActivity(MainActivity.this)
+                .withPermissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.RECEIVE_BOOT_COMPLETED
+                ).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+            }
+        }).check();
     }
 
     @Override

@@ -20,8 +20,7 @@ public abstract class LocationDatabase extends RoomDatabase {
             synchronized (LocationDatabase.class){
                 if (INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            LocationDatabase.class, "locations")
-                            .allowMainThreadQueries().build();
+                            LocationDatabase.class, "locations").build();
                 }
             }
         }
